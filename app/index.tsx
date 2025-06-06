@@ -1,12 +1,16 @@
 import { darkTheme, lightTheme } from "@/styles/theme";
 import { useRouter } from "expo-router";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Button, Text, View } from "react-native";
+import { Button, Text, TouchableOpacity, View } from "react-native";
 // eslint-disable-next-line import/no-named-as-default
 import styled, { ThemeProvider } from "styled-components/native";
 import { useState } from "react";
 
 export default function Screen1() {
+  const [count, setCount] = useState(0);
+  const onPress = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const router = useRouter();
 
@@ -22,7 +26,9 @@ export default function Screen1() {
   return (
     <ThemeProvider theme={currentTheme}>
       <Container>
-        <Title>hola desde Screen 1</Title>
+        <TouchableOpacity onPress={onPress}>
+          <Title>hola desde Screen 1</Title>
+        </TouchableOpacity>
         <Button
           title="Ir a screen 2"
           onPress={() =>
@@ -33,6 +39,7 @@ export default function Screen1() {
           }
         />
         <Button title="Cambiar tema" onPress={toggleTheme} />
+        <Title>Contador: {count}</Title>
       </Container>
     </ThemeProvider>
   );
