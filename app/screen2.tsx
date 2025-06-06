@@ -1,7 +1,7 @@
-import { Button, Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import { Button, Text, View } from "react-native";
 
-export default function screen2() {
+export default function Screen2() {
   const router = useRouter();
 
   return (
