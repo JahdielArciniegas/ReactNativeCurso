@@ -1,15 +1,27 @@
 import styled from "styled-components/native";
-import { View, Text } from "react-native";
 import { router } from "expo-router";
+import { useState } from "react";
+import { Alert } from "react-native";
 
 export default function Componente() {
+  const [centimetros, setCentimetros] = useState(null);
+  const [result, setResult] = useState(null);
+  const Convertirdecmetro = () => {
+    if(!centimetros){
+      Alert.alert("Por favor ingresa un valor");
+      return
+    }
+    const metros = parseFloat(centimetros) / 100;
+    setResult(metros);
+  }
+
   return (
     <Container>
-      <Input />
-      <CalculateButton>
+      <Input placeholder="Ingrese los centimetros" keyboardType="numeric" onChangeText={setCentimetros}/>
+      <CalculateButton onPress={Convertirdecmetro}>
         <ButtonText>Calcular</ButtonText>
       </CalculateButton>
-      <ResultText>Resultado: -</ResultText>
+      <ResultText>Resultado: {result!==null ? `${result} m` : ""}</ResultText>
       <BackButton onPress={() => router.back()}>
         <BackButtonText>Volver</BackButtonText>
       </BackButton>
