@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-named-as-default
 import styled from "styled-components/native";
 import { router } from "expo-router";
 import { useState } from "react";
